@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Paedi Dose">
 <link rel="manifest" href="manifest.json">
-<title>Paedi Dose Master- Bimbo</title>
+<title>Paedi Dose Master.Developed by Dr. Sumaiya Mohammad, SMRR Team</title>
 <style>
 :root{--p:#0f766e;--bg:#f0fdfa;--card:#fff}
 *{box-sizing:border-box}body{margin:0;font-family:system-ui;background:var(--bg);color:#0f172a}
@@ -34,12 +34,13 @@ table{width:100%;border-collapse:collapse;font-size:11px}th,td{border:1px solid 
 @media print{.tabs,.ad-box,.btn,#langBtn,#printBtn{display:none !important}.sec{display:block !important}.container{max-width:100%}body{background:#fff}.result{border:1px solid #000}}
 </style>
 <!-- Google AdSense placeholder - apnar ID bosaben -->
-<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX"></script> -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX">function calcBurn(){let w=parseFloat(document.getElementById('bWt').value);let t=parseFloat(document.getElementById('bTbsa').value);if(!w||!t)return alert('Weight & % burn');let fluid=4*w*t*10;let firstHalf=fluid/2;let secondHalf=fluid/2;let cmt=t>=20?'Major burn - Parkland formula, give 1/2 in first 8h and 1/2 in next 16h. Monitor urine output.' : 'Minor burn - oral fluids & local care; Parkland estimate above.';document.getElementById('burnRes').style.display='block';document.getElementById('burnRes').innerHTML=`<b>Formula:</b> Parkland = 4 ml x kg x %TBSA<br>Total 24h fluid: <b>${fluid} ml</b><br>First 8h: ${firstHalf} ml | Next 16h: ${secondHalf} ml`+suggestionBox('burn',cmt);}
+</script> -->
 </head>
 <body>
-<div class="header"><div style="display:flex;align-items:center;gap:10px"><div class="logo">S</div><div><div style="font-weight:900;font-size:14px">Dr. Sumaiya Mohammad</div><div style="font-size:10px" id="headerSub">Physiologist, Bangladesh • শিশু ডোজ মাস্টার</div></div></div><button id="langBtn" onclick="toggleLang()" style="padding:6px 10px;border-radius:20px;border:none;font-weight:800">EN</button><button id="printBtn" onclick="window.print()" style="padding:6px 10px;border-radius:20px;border:none;font-weight:800;margin-left:6px">🖨 Print</button></div>
+<div class="header"><div style="display:flex;align-items:center;gap:10px"><div class="logo">👶</div><div><div style="font-weight:900;font-size:14px">Dr. Sumaiya Mohammad</div><div style="font-size:10px" id="headerSub">Physiologist, Bangladesh • শিশু ডোজ মাস্টার</div></div></div><button id="langBtn" onclick="toggleLang()" style="padding:6px 10px;border-radius:20px;border:none;font-weight:800">EN</button><button id="printBtn" onclick="window.print()" style="padding:6px 10px;border-radius:20px;border:none;font-weight:800;margin-left:6px">🖨 Print</button></div>
 <div class="tabs">
-<div class="tab active" data-t="age">বয়স</div><div class="tab" data-t="neonate">নবজাতক</div><div class="tab" data-t="growth">গ্রোথ</div><div class="tab" data-t="expected">Expected</div><div class="tab" data-t="bsa">BSA</div><div class="tab" data-t="emerg">Emergency</div><div class="tab" data-t="dehy">Dehydration</div><div class="tab" data-t="dose">ডোজ</div><div class="tab" data-t="drugs">ওষুধ</div>
+<div class="tab active" data-t="age">বয়স</div><div class="tab" data-t="neonate">নবজাতক</div><div class="tab" data-t="growth">গ্রোথ</div><div class="tab" data-t="expected">Expected</div><div class="tab" data-t="bsa">BSA</div><div class="tab" data-t="emerg">Emergency</div><div class="tab" data-t="dehy">Dehydration</div><div class="tab" data-t="burn">Burn</div><div class="tab" data-t="dose">ডোজ</div><div class="tab" data-t="drugs">ওষুধ</div>
 </div>
 <div class="container">
 <!-- TOP AD -->
@@ -51,6 +52,7 @@ table{width:100%;border-collapse:collapse;font-size:11px}th,td{border:1px solid 
 </div>
 
 <div id="age" class="card sec"><h3>বয়স ক্যালকুলেটর</h3><div class="row"><div><label>জন্ম তারিখ</label><input type="date" id="dob"></div><div><label>আজকের তারিখ</label><input type="date" id="today"></div></div><button class="btn" onclick="calcAge()">হিসাব করুন</button><div id="ageRes" class="result" style="display:none"></div></div>
+<div id="burn" class="card sec" style="display:none"><h3>Burn Management - % Burn & Fluid Loss</h3><div class="row"><div><label>Weight kg</label><input type="number" id="bWt" step="0.1"></div><div><label>% Total Body Surface Area (TBSA) burned</label><input type="number" id="bTbsa" step="0.1"></div></div><button class="btn" onclick="calcBurn()">Calculate Fluid</button><div id="burnRes" class="result" style="display:none"></div></div>
 <div id="dose" class="card sec" style="display:none"><h3>ওজন অনুযায়ী ডোজ</h3><label>ওজন (kg)</label><input type="number" id="wt" step="0.1"><div class="row"><div><label>mg/kg/dose</label><input type="number" id="dosePerKg"></div><div><label>Frequency</label><select id="freq"><option value="1">OD</option><option value="2">BD</option><option value="3" selected>TDS</option><option value="4">QDS</option></select></div></div><div class="row"><div><label>mg in</label><input type="number" id="mg" value="120"></div><div><label>ml</label><input type="number" id="ml" value="5"></div></div><button class="btn" onclick="calcDose()">Calculate</button><div id="doseRes" class="result" style="display:none"></div></div>
 <div id="drugs" class="card sec" style="display:none"><h3>Common Drugs - Tap</h3><input type="text" id="drugSearch" placeholder="Search..." oninput="filterDrugs()"><div id="drugList" style="margin-top:8px"></div></div>
 <div id="neonate" class="card sec" style="display:none">
@@ -89,7 +91,7 @@ table{width:100%;border-collapse:collapse;font-size:11px}th,td{border:1px solid 
 <h3>📈 গ্রোথ পার্সেন্টাইল - WHO (Red Dot + Green Lines)</h3>
 <div class="small"><b>Formula:</b> % difference = (Actual − Expected 50th) ÷ Expected × 100 | WHO weight-for-age 50th percentile (boys, kg)</div>
 <div class="row"><div><label>Sex</label><select id="gSex"><option value="boy">Boy</option><option value="girl">Girl</option></select></div><div><label>Age months 0-60</label><input type="number" id="gAge" placeholder="12"></div></div>
-<div class="row"><div><label>Weight kg</label><input type="number" id="gWt" step="0.1"></div><div><label>Height cm</label><input type="number" id="gHt" step="0.1"></div></div>
+<div class="row"><div><label>Weight kg</label><input type="number" id="gWt" step="0.1"></div><div><label>Height cm</label><input type="number" id="gHt" step="0.1"></div></div><div class="row"><div><label>Height inches (optional)</label><input type="number" id="gHtIn" step="0.1"></div></div>
 <button class="btn" onclick="calcGrowth()">Plot Graph - Red Dot + Green Lines</button>
 <div id="growthRes" class="result" style="display:none"></div>
 <canvas id="growthCanvas" width="700" height="400" style="margin-top:10px;border:1px solid #e2e8f0;border-radius:10px;background:#fff"></canvas>
@@ -138,7 +140,7 @@ const headerSub={bn:'Physiologist, Bangladesh • শিশু ডোজ মা�
 function applyLang(){document.querySelectorAll('.tab').forEach(t=>{t.textContent=tabLabels[currentLang][t.dataset.t]||t.textContent;});document.getElementById('headerSub').textContent=headerSub[currentLang];document.getElementById('langBtn').textContent=currentLang==='bn'?'EN':'BN';document.documentElement.lang=currentLang==='bn'?'bn':'en';}
 function toggleLang(){currentLang=currentLang==='bn'?'en':'bn';applyLang();}
 applyLang();
-function calcAge(){let dob=new Date(document.getElementById('dob').value);let today=new Date(document.getElementById('today').value);if(!dob||isNaN(dob))return alert('DOB');let y=today.getFullYear()-dob.getFullYear();let m=today.getMonth()-dob.getMonth();let d=today.getDate()-dob.getDate();if(d<0){m--;let pm=new Date(today.getFullYear(),today.getMonth(),0).getDate();d+=pm}if(m<0){y--;m+=12}let totalDays=Math.floor((today-dob)/86400000);let cmt=totalDays<28?`Neonate ${totalDays} days - newborn care.`:`${y}y ${m}m - Compare with expected.`;document.getElementById('ageRes').style.display='block';document.getElementById('ageRes').innerHTML=`বয়স: ${y} বছর, ${m} মাস, ${d} দিন (Total ${totalDays} দিন)`+suggestionBox('age',cmt);}
+function calcAge(){let dob=new Date(document.getElementById('dob').value);let today=new Date(document.getElementById('today').value);if(!dob||isNaN(dob))return alert('DOB');let y=today.getFullYear()-dob.getFullYear();let m=today.getMonth()-dob.getMonth();let d=today.getDate()-dob.getDate();if(d<0){m--;let pm=new Date(today.getFullYear(),today.getMonth(),0).getDate();d+=pm}if(m<0){y--;m+=12}let totalDays=Math.floor((today-dob)/86400000);let cmt=totalDays<28?`Neonate ${totalDays} days - newborn care.`:`${y}y ${m}m - Compare with expected.`;if(y>19){alert('This software is for 0-19 years only');return;}document.getElementById('ageRes').style.display='block';document.getElementById('ageRes').innerHTML=`বয়স: ${y} বছর, ${m} মাস, ${d} দিন (Total ${totalDays} দিন)`+suggestionBox('age',cmt);}
 function calcDose(){let wt=parseFloat(document.getElementById('wt').value);let d=parseFloat(document.getElementById('dosePerKg').value);let mg=parseFloat(document.getElementById('mg').value);let ml=parseFloat(document.getElementById('ml').value);let freq=parseInt(document.getElementById('freq').value);if(!wt||!d)return alert('wt');let per=wt*d;let mlPer=per*ml/mg;let cmt=`For ${wt}kg, dose is ${per.toFixed(1)}mg = ${mlPer.toFixed(1)}ml per dose, ${freq}x daily.`;document.getElementById('doseRes').style.display='block';document.getElementById('doseRes').innerHTML=`একবারে: <b>${per.toFixed(1)} mg = ${mlPer.toFixed(1)} ml</b><br>দিনে: ${(per*freq).toFixed(1)} mg`+suggestionBox('dose',cmt);}
 const drugs=[['Paracetamol','10-15 mg/kg/dose q6h'],['Ibuprofen','10 mg/kg/dose q8h'],['Amoxicillin','25-50 mg/kg/day TDS'],['Azithromycin','10 mg/kg Day1'],['Cefixime','8 mg/kg/day BD'],['ORS','75ml/kg'],['Zinc','10mg <6mo 20mg >6mo'],['Salbutamol Neb','0.15 mg/kg'],['Ondansetron','0.15 mg/kg'],['Adrenaline','0.01 mg/kg']];
 function renderDrugs(f=''){let c=document.getElementById('drugList');c.innerHTML='';drugs.filter(d=>d[0].toLowerCase().includes(f.toLowerCase())).forEach(d=>{let div=document.createElement('div');div.style.cssText='padding:8px;border:1px dashed #cbd5e1;border-radius:8px;margin-bottom:5px;font-size:12px;cursor:pointer';div.innerHTML=`<b>${d[0]}</b> - ${d[1]}`;div.onclick=()=>{document.querySelector('[data-t=dose]').click();let m=d[1].match(/([0-9.]+)\s*mg\/kg/);if(m)document.getElementById('dosePerKg').value=m[1];};c.appendChild(div);});}
@@ -152,6 +154,8 @@ function calcBallardChart(){let total=0;for(let i=1;i<=12;i++){total+=parseInt(d
 function calcGrowth(){
  let age=parseInt(document.getElementById('gAge').value);
  let wt=parseFloat(document.getElementById('gWt').value);
+ let hi=parseFloat(document.getElementById('gHtIn').value);
+ if(!isNaN(hi)&&hi>0){document.getElementById('gHt').value=(hi*2.54).toFixed(1);}
  if(isNaN(age)||age<0||age>60) return alert('Age 0-60 month dao');
  // WHO weight-for-age 50th percentile (kg), boys & girls, 0-60 months
  const who50Boy=[3.3,4.5,5.6,6.4,7.0,7.5,7.9,8.3,8.6,8.9,9.2,9.4,9.6,9.9,10.2,10.5,10.8,11.0,11.1,11.3,11.5,11.7,11.9,12.0,12.2,12.4,12.6,12.8,13.0,13.1,13.3,13.4,13.6,13.7,13.9,14.0,14.2,14.3,14.5,14.6,14.8,14.9,15.0,15.2,15.3,15.5,15.6,15.8,15.9,16.0,16.1,16.2,16.3,16.5,16.6,16.7,16.8,17.0,17.1,17.2,17.3];
