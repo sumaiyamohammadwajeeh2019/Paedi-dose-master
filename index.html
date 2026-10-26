@@ -38,7 +38,7 @@ table{width:100%;border-collapse:collapse;font-size:11px}th,td{border:1px solid 
 </script> -->
 </head>
 <body>
-<div class="header"><div style="display:flex;align-items:center;gap:10px"><div class="logo">👶</div><div><div style="font-weight:900;font-size:14px">Dr. Sumaiya Mohammad</div><div style="font-size:10px" id="headerSub">Physiologist, Bangladesh • শিশু ডোজ মাস্টার</div></div></div><button id="langBtn" onclick="toggleLang()" style="padding:6px 10px;border-radius:20px;border:none;font-weight:800">EN</button><button id="printBtn" onclick="window.print()" style="padding:6px 10px;border-radius:20px;border:none;font-weight:800;margin-left:6px">🖨 Print</button></div>
+<div class="header"><div style="display:flex;align-items:center;gap:10px"><div class="logo">👶</div><div><div style="font-weight:900;font-size:14px">Paedi Dose Master/ developed by Dr. Sumaiya Mohammad,SMRR Team,Bangladesh.</div><div style="font-size:10px" id="headerSub">Physiologist, Bangladesh • শিশু ডোজ মাস্টার</div></div></div><button id="langBtn" onclick="toggleLang()" style="padding:6px 10px;border-radius:20px;border:none;font-weight:800">EN</button><button id="printBtn" onclick="window.print()" style="padding:6px 10px;border-radius:20px;border:none;font-weight:800;margin-left:6px">🖨 Print</button></div>
 <div class="tabs">
 <div class="tab active" data-t="age">বয়স</div><div class="tab" data-t="neonate">নবজাতক</div><div class="tab" data-t="growth">গ্রোথ</div><div class="tab" data-t="expected">Expected</div><div class="tab" data-t="bsa">BSA</div><div class="tab" data-t="emerg">Emergency</div><div class="tab" data-t="dehy">Dehydration</div><div class="tab" data-t="burn">Burn</div><div class="tab" data-t="dose">ডোজ</div><div class="tab" data-t="drugs">ওষুধ</div>
 </div>
@@ -135,7 +135,7 @@ document.getElementById('today').valueAsDate=new Date();
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.querySelectorAll('.sec').forEach(s=>s.style.display='none');document.getElementById(t.dataset.t).style.display='block';}));
 let currentLang='bn';
 const tabLabels={bn:{age:'বয়স',dose:'ডোজ',drugs:'ওষুধ',neonate:'নবজাতক',growth:'গ্রোথ',expected:'Expected',bsa:'BSA',emerg:'Emergency',dehy:'Dehydration'},en:{age:'Age',dose:'Dose',drugs:'Medicine',neonate:'Neonate',growth:'Growth',expected:'Expected',bsa:'BSA',emerg:'Emergency',dehy:'Dehydration'}};
-const headerSub={bn:'Physiologist, Bangladesh • শিশু ডোজ মাস্টার',en:'Physiologist, Bangladesh • Paedi Dose Master'};
+const headerSub={bn:'Paedi Dose Master/ developed by Dr. Sumaiya Mohammad,SMRR Team,Bangladesh.',en:'Paedi Dose Master/ developed by Dr. Sumaiya Mohammad,SMRR Team,Bangladesh.'};
 function applyLang(){document.querySelectorAll('.tab').forEach(t=>{t.textContent=tabLabels[currentLang][t.dataset.t]||t.textContent;});document.getElementById('headerSub').textContent=headerSub[currentLang];document.getElementById('langBtn').textContent=currentLang==='bn'?'EN':'BN';document.documentElement.lang=currentLang==='bn'?'bn':'en';}
 function toggleLang(){currentLang=currentLang==='bn'?'en':'bn';applyLang();}
 applyLang();
