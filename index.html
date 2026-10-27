@@ -135,7 +135,7 @@ document.getElementById('today').valueAsDate=new Date();
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.querySelectorAll('.sec').forEach(s=>s.style.display='none');document.getElementById(t.dataset.t).style.display='block';}));
 let currentLang='bn';
 const tabLabels={bn:{age:'বয়স',dose:'ডোজ',drugs:'ওষুধ',neonate:'নবজাতক',growth:'গ্রোথ',expected:'Expected',bsa:'BSA',emerg:'Emergency',dehy:'Dehydration'},en:{age:'Age',dose:'Dose',drugs:'Medicine',neonate:'Neonate',growth:'Growth',expected:'Expected',bsa:'BSA',emerg:'Emergency',dehy:'Dehydration'}};
-const headerSub={bn:'Paedi Dose Master',en:'Paedi Dose Master'};
+const headerSub={bn:'Developed by Dr. Sumaiya Mohammad, SMRR Team, Bangladesh',en:'Developed by Dr. Sumaiya Mohammad, SMRR Team, Bangladesh'};
 function applyLang(){document.querySelectorAll('.tab').forEach(t=>{t.textContent=tabLabels[currentLang][t.dataset.t]||t.textContent;});document.getElementById('headerSub').textContent=headerSub[currentLang];document.getElementById('langBtn').textContent=currentLang==='bn'?'EN':'BN';document.documentElement.lang=currentLang==='bn'?'bn':'en';}
 function toggleLang(){currentLang=currentLang==='bn'?'en':'bn';applyLang();}
 applyLang();
